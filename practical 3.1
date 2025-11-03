@@ -1,0 +1,61 @@
+import React from "react";
+
+function ProductCard({ name, price, status }) {
+  return (
+    <div style={styles.card}>
+      <h3 style={{ fontWeight: "bold" }}>{name}</h3>
+      <p>Price: ${price}</p>
+      <p>Status: {status}</p>
+    </div>
+  );
+}
+
+export default function App() {
+  const products = [
+    { name: "Wireless Mouse", price: 25.99, status: "In Stock" },
+    { name: "Keyboard", price: 45.5, status: "Out of Stock" },
+    { name: "Monitor", price: 199.99, status: "In Stock" },
+  ];
+
+  return (
+    <div style={styles.container}>
+      <h2 style={styles.title}>Products List</h2>
+      <div style={styles.list}>
+        {products.map((item, index) => (
+          <ProductCard
+            key={index}
+            name={item.name}
+            price={item.price}
+            status={item.status}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const styles = {
+  container: {
+    border: "1px solid black",
+    textAlign: "center",
+    padding: "20px",
+    width: "fit-content",
+    margin: "auto",
+  },
+  title: {
+    fontWeight: "bold",
+    marginBottom: "20px",
+  },
+  list: {
+    display: "flex",
+    justifyContent: "center",
+    gap: "20px",
+  },
+  card: {
+    border: "1px solid #ddd",
+    borderRadius: "10px",
+    padding: "15px",
+    width: "180px",
+    boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+  },
+};
